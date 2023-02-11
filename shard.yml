@@ -1,0 +1,17 @@
+name: nonoecs-template
+version: 0.1.0
+
+authors:
+  - konovod <konovod@gmail.com>
+
+targets:
+  nonoecs-template:
+    main: src/nonoecs-template.cr
+
+dependencies:
+  myecs:
+    github: konovod/myecs
+
+crystal: 1.6.2
+
+license: MIT
