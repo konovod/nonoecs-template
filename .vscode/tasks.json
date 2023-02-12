@@ -6,7 +6,7 @@
     {
       "label": "spec",
       "type": "shell",
-      "command": "crystal spec -Ddont_run ",
+      "command": "crystal spec",
       "problemMatcher": []
     },
     {

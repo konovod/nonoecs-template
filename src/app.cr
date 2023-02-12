@@ -10,7 +10,7 @@ require "./game_systems"
 struct QuitEvent < ECS::Component
 end
 
-{% unless flag? :dont_run %}
+{% unless flag? :spec %}
   begin
     world = ECS::World.new
     systems = ECS::Systems.new(world)
@@ -18,14 +18,17 @@ end
       .add(GameSystems.new(world))
 
     systems.init
-    quitter = world.of(QuitEvent)
     loop do
       systems.execute
-      break if !quitter.empty?
+      break if world.component_exists?(QuitEvent)
     end
     systems.teardown
   rescue ex : Exception
+    {% if flag? :release %}
     Engine.log(ex.inspect_with_backtrace)
+    {% else %}
+    puts ex.inspect_with_backtrace
+    {% end %}
   end
 {% end %}
 ECS.debug_stats
