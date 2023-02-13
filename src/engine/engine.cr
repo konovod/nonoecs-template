@@ -1,5 +1,6 @@
 require "./libnonoengine"
-require "./utils"
+require "./vector2"
+require "./aabb"
 require "./physics"
 require "./shaders"
 require "./gui"
