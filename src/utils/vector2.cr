@@ -80,14 +80,52 @@ record Vector2, x : Float64, y : Float64 do
     s = Math.sin(angle)
     Vector2.new(c*x - s*y, s*x + c*y)
   end
+
+  def to_i
+    v2i(x.to_i, y.to_i)
+  end
+end
+
+record IntVector2, x : Int32, y : Int32 do
+  def to_f
+    v2(x, y)
+  end
+
+  def -(other)
+    return IntVector2.new(@x - other.x, @y - other.y)
+  end
+
+  def -
+    return IntVector2.new(-@x, -@y)
+  end
+
+  def +(other)
+    return IntVector2.new(@x + other.x, @y + other.y)
+  end
+
+  def *(scale : Number)
+    return IntVector2.new(@x*scale, @y*scale)
+  end
+
+  def //(scale)
+    return IntVector2.new(@x // scale, @y // scale)
+  end
 end
 
 struct Number
   def *(v : Vector2)
     v*self
   end
+
+  def *(v : IntVector2)
+    v*self
+  end
 end
 
 def v2(x, y)
   Vector2.new(x, y)
+end
+
+def v2i(x, y)
+  IntVector2.new(x, y)
 end
