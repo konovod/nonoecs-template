@@ -253,6 +253,7 @@ lib LibEngine
   fun font_create = FontCreate(font : Font, char_size : Int32, color : Color, styles : FontStyle, kx : Float32, ky : Float32) : FontInstance
   fun draw_text = DrawText(font : FontInstance, text : String, x : Coord, y : Coord)
   fun draw_text_boxed = DrawTextBoxed(font : FontInstance, text : String, x : Coord, y : Coord, w : Coord, h : Coord, halign : HAlign, valign : VAlign)
+  fun measure_text = MeasureText(font : FontInstance, text : String, width : Coord*, height : Coord*)
 
   # ГУИ
 
