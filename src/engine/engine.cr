@@ -39,6 +39,10 @@ module Engine
     LibEngine.get(LibEngine::EngineValue.new(param.to_i))
   end
 
+  def self.screen_size
+    v2(self[Params::RealWidth], self[Params::RealHeight])
+  end
+
   class RawResource
     @data : LibEngine::RawResource
 

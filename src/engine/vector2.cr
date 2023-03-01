@@ -95,6 +95,10 @@ record IntVector2, x : Int32, y : Int32 do
     return IntVector2.new(@x - other.x, @y - other.y)
   end
 
+  def -(other : Vector2)
+    return Vector2.new(@x - other.x, @y - other.y)
+  end
+
   def -
     return IntVector2.new(-@x, -@y)
   end
@@ -103,12 +107,20 @@ record IntVector2, x : Int32, y : Int32 do
     return IntVector2.new(@x + other.x, @y + other.y)
   end
 
+  def +(other : Vector2)
+    return Vector2.new(@x + other.x, @y + other.y)
+  end
+
   def *(scale : Number)
     return IntVector2.new(@x*scale, @y*scale)
   end
 
   def //(scale)
     return IntVector2.new(@x // scale, @y // scale)
+  end
+
+  def inspect(io)
+    io << "v2i(x=" << @x << ", y=" << @y << ")"
   end
 end
 

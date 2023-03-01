@@ -42,11 +42,15 @@ record AABB, v0 : Vector2, size : Vector2 do
   def height
     size.y
   end
+
+  def includes?(vector)
+    (v0.x..v0.x + size.x).includes?(vector.x) && (v0.y..v0.y + size.y).includes?(vector.y)
+  end
 end
 
 struct Vector2
   def inside?(aabb)
-    (aabb.v0.x..aabb.v0.x + aabb.size.x).includes?(self.x) && (aabb.v0.y..aabb.v0.y + aabb.size.y).includes?(self.y)
+    aabb.includes? self
   end
 end
 
