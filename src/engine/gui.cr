@@ -104,6 +104,17 @@ module Engine
     end
   end
 
+  def edit(value : Int32, min : Int32, max : Int32, font : Font, x = 0, y = 0, width = 0, height = 0, halign = HAlign::None, valign = VAlign::None, fill : Color? = nil, border : Color? = nil, *, allow_scroll = false) : Int32?
+    v = value
+    panel(x, y, width, height, halign, valign, fill, border) do
+      b = false
+      size = GUI.box.size
+      v = LibEngine.input_int(value, min, max, GUI.parent, 0, 0, size.x, size.y, LibEngine::HAlign::None, LibEngine::VAlign::None, font, pointerof(b), GUI.parent.unsafe_as(Pointer(Void)))
+      v += Mouse.scroll.to_i if allow_scroll && GUI.button_state.hover?
+    end
+    v == value ? nil : v
+  end
+
   enum ButtonState
     Normal
     Hover

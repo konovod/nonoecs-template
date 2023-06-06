@@ -43,6 +43,10 @@ module Engine
     v2(self[Params::RealWidth], self[Params::RealHeight])
   end
 
+  def self.screen_box
+    aabb(v2(0, 0), v2(self[Params::RealWidth], self[Params::RealHeight]))
+  end
+
   class RawResource
     @data : LibEngine::RawResource
 
@@ -89,7 +93,7 @@ module Engine
     end
 
     def draw_sliced(box : AABB, color = Color::WHITE)
-      LibEngine.sprite_sliced(to_unsafe, box.v0.x, box.v0.y, box.size.w, box.size.h, color)
+      LibEngine.sprite_sliced(to_unsafe, box.v0.x, box.v0.y, box.size.x, box.size.y, color)
     end
 
     def background(scale = v2(1, 1), offset = v2(0, 0), color = Color::WHITE)

@@ -29,8 +29,8 @@ def split_text(s, font, width)
   cur = ""
   s.split(' ').each do |part|
     added = "#{cur} #{part}"
-    x, y = font.measure(added)
-    if x > width
+    v = font.measure(added)
+    if v.x > width
       results << cur.strip
       cur = part
     else

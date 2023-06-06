@@ -46,6 +46,10 @@ record AABB, v0 : Vector2, size : Vector2 do
   def includes?(vector)
     (v0.x..v0.x + size.x).includes?(vector.x) && (v0.y..v0.y + size.y).includes?(vector.y)
   end
+
+  def cut(dv)
+    aabb(v0 + dv, size - 2*dv)
+  end
 end
 
 struct Vector2

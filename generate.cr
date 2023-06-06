@@ -145,6 +145,10 @@ class Processor
         end
       end
     end
+    if @indent == 2
+      print "N_SPRITES = #{RES_IDS["Sprite"]}"
+      print "N_TILEMAPS = #{RES_IDS["TileMap"]}"
+    end
     @indent -= 2
     @need_space = false
     print "end"
